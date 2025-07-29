@@ -1,22 +1,41 @@
-# Node modules
+# ============================
+# Node dependencies
+# ============================
 node_modules/
+luminous-stats/node_modules/
 
+# ============================
 # Build output
+# ============================
 dist/
 build/
+luminous-stats/dist/
+luminous-stats/build/
 
+# ============================
 # Logs
+# ============================
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 bun.lockb
 
-# Env files
+# ============================
+# Environment files
+# ============================
 .env
 .env.local
 
-# IDE / Editor
+# ============================
+# IDE / Editor settings
+# ============================
 .vscode/
 .idea/
 *.swp
+
+# ============================
+# Misc
+# ============================
+.DS_Store
+Thumbs.db
