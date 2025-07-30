@@ -22,6 +22,9 @@ export default defineConfig(async ({ mode }) => ({
   },
   build: {
     outDir: "dist",
+    rollupOptions: {
+      external: ["jspdf", "html2canvas"],
+    },
   },
   base: "./", // ensures assets resolve correctly on Vercel
 }));
