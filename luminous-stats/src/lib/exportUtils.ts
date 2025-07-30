@@ -1,6 +1,5 @@
 import Papa from 'papaparse';
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 export function exportCampaignsToCSV(data: any[], filenamePrefix = 'campaigns_report') {
   const csv = Papa.unparse(data);
@@ -20,6 +19,10 @@ export async function exportCampaignsToPDF(tableElement: HTMLElement, filenamePr
   const now = new Date();
   const dateStr = now.toISOString().slice(0, 10) + '_' + now.toTimeString().slice(0,5).replace(':','');
   const filename = `${filenamePrefix}_${dateStr}.pdf`;
+
+  // Dynamically import html2canvas and jspdf
+  const html2canvas = (await import('html2canvas')).default;
+  const jsPDF = (await import('jspdf')).default;
 
   // Render table to canvas
   const canvas = await html2canvas(tableElement, { scale: 2 });
@@ -46,4 +49,4 @@ export async function exportCampaignsToPDF(tableElement: HTMLElement, filenamePr
   pdf.addImage(imgData, 'PNG', imgProps.x, imgProps.y, imgProps.width, imgProps.height);
 
   pdf.save(filename);
-} 
+}
